@@ -3,422 +3,305 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Your Special Surprise | Ali Zaman</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ali Zaman's Surprise Studio</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-  --bg:#050a19;
-  --panel:#111c35;
-  --blue:#60a5fa;
-  --purple:#a78bfa;
-  --text:#f8fafc;
-  --muted:#b9c7dc;
+  --text: #f8fbff;
+  --muted: #b5c4dc;
+  --accent: #7dd3fc;
 }
-
-* { box-sizing:border-box; }
-
+* { box-sizing: border-box; }
 body {
-  margin:0;
-  min-height:100vh;
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Outfit',Arial,sans-serif;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:35px 16px;
-  overflow-x:hidden;
+  margin: 0;
+  min-height: 100vh;
+  background: #070b1d;
+  color: var(--text);
+  font-family: Outfit, Arial, sans-serif;
+  display: grid;
+  place-items: center;
+  padding: 28px 15px;
+  overflow-x: hidden;
 }
-
-/* ANIMATED BACKGROUND */
-
-.aurora {
-  position:fixed;
-  border-radius:50%;
-  filter:blur(100px);
-  opacity:.3;
-  pointer-events:none;
-  z-index:0;
+.glow {
+  position: fixed;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: .3;
+  pointer-events: none;
 }
-
-.aurora.one {
-  width:650px;height:650px;
-  background:#2563eb;
-  top:-330px;left:-260px;
-  animation:moveOne 12s ease-in-out infinite alternate;
+.g1 {
+  background: #1d5bd4;
+  top: -250px;
+  left: -200px;
+  animation: drift 14s infinite alternate;
 }
-
-.aurora.two {
-  width:650px;height:650px;
-  background:#9333ea;
-  bottom:-330px;right:-260px;
-  animation:moveTwo 15s ease-in-out infinite alternate;
+.g2 {
+  background: #9b28a5;
+  right: -200px;
+  bottom: -300px;
+  animation: drift 17s infinite alternate-reverse;
 }
-
-@keyframes moveOne {
-  to {transform:translate(180px,170px) scale(1.2)}
+@keyframes drift {
+  to { transform: translate(200px,120px) scale(1.3); }
 }
-@keyframes moveTwo {
-  to {transform:translate(-160px,-130px) scale(1.25)}
-}
-
-.grid-bg {
-  position:fixed;
-  inset:0;
+.grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .2;
   background-image:
-    linear-gradient(#ffffff07 1px,transparent 1px),
-    linear-gradient(90deg,#ffffff07 1px,transparent 1px);
-  background-size:48px 48px;
-  pointer-events:none;
+    linear-gradient(#ffffff20 1px,transparent 1px),
+    linear-gradient(90deg,#ffffff20 1px,transparent 1px);
+  background-size: 50px 50px;
 }
-
-.star {
-  position:fixed;
-  width:3px;height:3px;
-  border-radius:50%;
-  background:white;
-  pointer-events:none;
-  animation:twinkle 3s infinite alternate;
+.spark {
+  position: fixed;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: twinkle 3s infinite alternate;
 }
-
 @keyframes twinkle {
-  from {opacity:.1;transform:scale(.6)}
-  to {opacity:.85;transform:scale(1.6)}
+  from { opacity: .1; transform: scale(.5); }
+  to { opacity: .9; transform: scale(1.5); }
 }
-
-/* MAIN CARD */
-
-.card {
-  position:relative;
-  z-index:2;
-  width:100%;
-  max-width:540px;
-  padding:42px 35px;
-  border-radius:28px;
-  border:1px solid #ffffff26;
-  background:rgba(15,23,42,.84);
-  backdrop-filter:blur(24px);
-  box-shadow:
-    0 30px 100px #0009,
-    0 0 65px #3b82f615;
-  text-align:center;
+.shell {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 610px;
+  background: linear-gradient(140deg,#182441ee,#14152eea);
+  border: 1px solid #ffffff24;
+  border-radius: 27px;
+  box-shadow: 0 30px 100px #0009;
+  padding: clamp(24px,5vw,45px);
+  text-align: center;
+  backdrop-filter: blur(22px);
 }
-
-.page {display:none;}
-
-.page.active {
-  display:block;
-  animation:appear .65s ease both;
+.screen { display: none; }
+.screen.active {
+  display: block;
+  animation: rise .55s ease;
 }
-
-@keyframes appear {
-  from {opacity:0;transform:translateY(28px)}
-  to {opacity:1;transform:translateY(0)}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
-.tag {
-  display:inline-block;
-  padding:9px 16px;
-  background:#60a5fa13;
-  border:1px solid #60a5fa55;
-  color:#93c5fd;
-  border-radius:40px;
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:2px;
-  text-transform:uppercase;
+.eyebrow {
+  display: inline-block;
+  border: 1px solid #80c9ff60;
+  background: #80c9ff12;
+  color: #9cddff;
+  border-radius: 30px;
+  padding: 9px 15px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
-
-.gift-wrap {
-  position:relative;
-  width:170px;height:170px;
-  display:grid;
-  place-items:center;
-  margin:25px auto;
-}
-
-.ring {
-  position:absolute;
-  border:1px dashed #93c5fd70;
-  width:150px;height:150px;
-  border-radius:50%;
-  animation:spin 18s linear infinite;
-}
-
-.ring.two {
-  width:118px;height:118px;
-  border-color:#c4b5fd88;
-  animation-direction:reverse;
-}
-
-@keyframes spin {
-  to {transform:rotate(360deg)}
-}
-
-.gift {
-  font-size:78px;
-  animation:float 3s ease-in-out infinite;
-  filter:drop-shadow(0 0 22px #8b5cf688);
-}
-
-@keyframes float {
-  50% {transform:translateY(-13px) rotate(6deg)}
-}
-
 h1 {
-  font-size:clamp(30px,6vw,44px);
-  line-height:1.17;
-  letter-spacing:-1.3px;
-  margin:20px 0;
+  font-size: clamp(30px,7vw,49px);
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+  margin: 20px 0;
 }
-
-.gradient {
-  background:linear-gradient(90deg,#93c5fd,#c4b5fd,#67e8f9);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+p { color: var(--muted); line-height: 1.7; }
+.shine {
+  background: linear-gradient(100deg,#93c5fd,#d8b4fe,#67e8f9);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
-
-p {
-  color:var(--muted);
-  line-height:1.75;
-  font-size:15px;
+.gift {
+  position: relative;
+  margin: 25px auto;
+  width: 155px;
+  height: 155px;
+  display: grid;
+  place-items: center;
+  font-size: 83px;
+  animation: float 3s infinite ease-in-out;
 }
-
-.subtitle {
-  color:white;
-  font-size:17px;
-  font-weight:600;
-  margin:25px 0;
+.gift::before, .gift::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px dashed #8acaff76;
+  border-radius: 50%;
+  animation: spin 17s linear infinite;
 }
-
-/* BUTTONS */
-
+.gift::after {
+  inset: 15px;
+  animation-direction: reverse;
+}
+@keyframes float {
+  50% { transform: translateY(-13px); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+button { font: inherit; }
 .btn {
-  width:100%;
-  padding:17px 20px;
-  margin-top:16px;
-  border:0;
-  border-radius:13px;
-  background:linear-gradient(110deg,#2563eb,#8b5cf6);
-  color:white;
-  font:700 16px 'Outfit',sans-serif;
-  cursor:pointer;
-  transition:transform .3s,box-shadow .3s;
-  position:relative;
-  overflow:hidden;
+  width: 100%;
+  border: none;
+  border-radius: 13px;
+  padding: 16px 19px;
+  margin-top: 17px;
+  background: linear-gradient(110deg,#286bed,#8150ea);
+  color: white;
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform .25s, box-shadow .25s;
 }
-
-.btn:hover {
-  transform:translateY(-4px);
-  box-shadow:0 14px 38px #6366f166;
+.btn:hover:not(:disabled) {
+  transform: translateY(-4px);
+  box-shadow: 0 13px 33px #6366f170;
 }
-
-.btn:disabled {
-  opacity:.55;
-  transform:none;
-  cursor:wait;
+.btn:disabled { opacity: .5; cursor: wait; }
+.btn.alt {
+  background: #ffffff14;
+  border: 1px solid #ffffff33;
 }
-
-.btn.secondary {
-  background:#ffffff12;
-  border:1px solid #ffffff32;
+.small {
+  font-size: 12px;
+  color: #a2b0cb;
 }
-
-.note {
-  color:#94a3b8;
-  font-size:12px;
-  margin-top:22px;
-}
-
-/* FORM */
-
-.form-fields {text-align:left;}
-
+form { text-align: left; }
 .field {
-  display:block;
-  margin-top:18px;
-  color:#e2e8f0;
-  font-size:13px;
-  font-weight:600;
+  display: block;
+  margin-top: 15px;
+  color: #e4ecff;
+  font-size: 13px;
+  font-weight: 700;
 }
-
-.field input,
-.field select {
-  display:block;
-  width:100%;
-  margin-top:8px;
-  padding:14px 15px;
-  border:1px solid #455472;
-  border-radius:11px;
-  background:#090f22;
-  color:white;
-  font:400 14px 'Outfit',sans-serif;
-  outline:none;
-  transition:border-color .25s,box-shadow .25s;
+.field input, .field select {
+  width: 100%;
+  display: block;
+  margin-top: 7px;
+  padding: 13px 14px;
+  background: #080f26;
+  color: white;
+  border: 1px solid #53607d;
+  border-radius: 10px;
+  font: inherit;
+  outline: none;
 }
-
-.field input:focus,
-.field select:focus {
-  border-color:var(--blue);
-  box-shadow:0 0 0 3px #60a5fa20;
+.field input:focus, .field select:focus {
+  border-color: #8bd4fa;
+  box-shadow: 0 0 0 3px #60a5fa29;
 }
-
-.field input::placeholder {color:#8291ab;}
-
-.field input[type=file] {
-  padding:12px;
-}
-
 .notice {
-  margin-top:22px;
-  padding:17px;
-  background:#60a5fa0d;
-  border:1px solid #60a5fa40;
-  border-radius:12px;
-  font-size:13px;
-  font-weight:400;
-  color:#cbd5e1;
-  line-height:1.65;
+  background: #102743;
+  border: 1px solid #6b9ed266;
+  border-radius: 13px;
+  padding: 16px;
+  margin-top: 22px;
+  color: #d7e5f8;
+  line-height: 1.65;
+  font-size: 13px;
 }
-
-.notice strong {color:#f8fafc;}
-
-.consent {
-  display:flex;
-  align-items:flex-start;
-  gap:11px;
-  margin-top:19px;
-  font-size:13px;
-  font-weight:400;
-  color:#cbd5e1;
-  line-height:1.6;
+.agree {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 18px 0;
 }
-
-.consent input {
-  width:19px;height:19px;
-  accent-color:#60a5fa;
-  margin-top:2px;
-  flex-shrink:0;
+.agree input {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: #60a5fa;
 }
-
-#status {
-  margin-top:14px;
-  font-size:13px;
-  line-height:1.6;
-  color:#fda4af;
-  text-align:center;
+.status {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #fcb5c4;
+  text-align: center;
 }
-
-/* REVEAL */
-
-#poster {
-  width:100%;
-  height:auto;
-  display:block;
-  border-radius:16px;
-  margin-top:22px;
-  box-shadow:0 20px 55px #0008;
+canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 20px;
+  border-radius: 16px;
+  box-shadow: 0 18px 50px #0008;
 }
-
-@media(max-width:480px) {
-  .card {padding:30px 20px;}
-}
-
-@media(prefers-reduced-motion:reduce) {
-  *,*::before,*::after {
-    animation:none!important;
-    transition:none!important;
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
   }
 }
 </style>
 </head>
-
 <body>
 
-<div class="aurora one"></div>
-<div class="aurora two"></div>
-<div class="grid-bg"></div>
-<div id="stars"></div>
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+<div class="grid"></div>
+<div id="particles"></div>
 
-<main class="card">
+<main class="shell">
 
-<!-- PAGE 1: INVITATION -->
-<section class="page active" id="page1">
-
-  <span class="tag">A Personal Invitation</span>
-
-  <div class="gift-wrap">
-    <div class="ring"></div>
-    <div class="ring two"></div>
-    <div class="gift">🎁</div>
-  </div>
+<!-- PAGE 1 -->
+<section id="intro" class="screen active">
+  <span class="eyebrow">A Personal Invitation</span>
+  <div class="gift">🎁</div>
 
   <h1>
     Ali Zaman Has a
-    <span class="gradient">Surprise for You!</span>
+    <span class="shine">Surprise for You!</span>
   </h1>
 
   <p>
-    You've been personally invited to an extraordinary
-    little experience.
-    A touch of mystery, a little excitement, and
-    something special waiting to be discovered.
+    Something hilarious is waiting on the other side.
+    Answer a few fun questions and uncover the
+    superhero you never knew you were.
   </p>
 
-  <div class="subtitle">
-    Are you ready to unlock your surprise?
-  </div>
-
-  <button class="btn" type="button" onclick="goToPage(2)">
-    ✨ Unlock Your Surprise
+  <button type="button" class="btn" id="start">
+    ✨ Unlock My Surprise
   </button>
 
-  <p class="note">
-    Your personalized adventure begins here.
-  </p>
-
+  <p class="small">Created for fun by Ali Zaman.</p>
 </section>
 
-<!-- PAGE 2: PERSONAL QUESTIONNAIRE -->
-<section class="page" id="page2">
-
-  <span class="tag">Your Surprise Journey</span>
+<!-- PAGE 2 -->
+<section id="questions" class="screen">
+  <span class="eyebrow">Step 2 of 3</span>
 
   <h1>
-    Let's Make It
-    <span class="gradient">Personal!</span>
+    Build Your <span class="shine">Funny Alter Ego!</span>
   </h1>
 
   <p>
-    Every great surprise begins with a little mystery.
-    Tell us about yourself to create something
-    unforgettable.
+    Tell us about your favorites and upload a selfie
+    for your custom comedy poster.
   </p>
 
-  <form id="funForm" class="form-fields">
+  <form id="entry">
 
-    <label class="field">
-      Your Full Name
-      <input id="fullName" type="text"
-        placeholder="Enter your full name"
-        maxlength="80" required>
+    <label class="field">Full Name
+      <input id="fullName" required maxlength="80"
+        placeholder="Enter your full name">
     </label>
 
-    <label class="field">
-      Your Email Address
-      <input id="email" type="email"
-        placeholder="you@example.com"
-        maxlength="120" required>
+    <label class="field">Email Address
+      <input id="email" type="email" required
+        placeholder="you@example.com">
     </label>
 
-    <label class="field">
-      What's Your Favorite Color?
+    <label class="field">Favorite Color
       <select id="color" required>
-        <option value="">Choose your color</option>
+        <option value="">Select a color</option>
         <option>Blue</option>
         <option>Red</option>
         <option>Green</option>
@@ -431,108 +314,87 @@ p {
       </select>
     </label>
 
-    <label class="field">
-      What's Your Favorite Food?
-      <input id="food" type="text"
-        placeholder="Pizza, burger, biryani..."
-        maxlength="80" required>
+    <label class="field">Favorite Food
+      <input id="food" required maxlength="60"
+        placeholder="Pizza, biryani, burgers...">
     </label>
 
-    <label class="field">
-      Who Is the Person You Love Most?
-      <input id="loved" type="text"
-        placeholder="Someone very special..."
-        maxlength="80" required>
+    <label class="field">Person You Love Most
+      <input id="loved" required maxlength="60"
+        placeholder="Someone special">
     </label>
 
-    <label class="field">
-      Your Instagram Username
-      <input id="instagram" type="text"
-        placeholder="@yourusername"
-        maxlength="50" required>
+    <label class="field">Instagram Username
+      <input id="instagram" required maxlength="50"
+        placeholder="@username">
     </label>
 
-    <label class="field">
-      Upload Your Photo for the Funny Surprise
+    <label class="field">Upload Your Selfie
       <input id="selfie" type="file"
-        accept="image/*">
+        accept="image/png,image/jpeg,image/webp">
     </label>
 
-    <p class="note">
-      Your uploaded photo stays in this browser
-      and is used for your funny poster.
-      Your Instagram account is not accessed.
+    <p class="small">
+      Your selfie stays in your browser and is used
+      to create a funny cartoon poster.
     </p>
 
     <div class="notice">
-      <strong>Before creating your surprise</strong>
-
-      <p>
-        To complete this experience, your browser
-        will request access to your current location.
-        Your name, email, answers, coordinates,
-        and Google Maps link will be emailed to
-        Ali Zaman at alizaman0709@gmail.com
-        through FormSubmit.
-      </p>
-
-      <p>
-        Location access is required to submit
-        this form. You may decline permission
-        and leave without submitting.
-      </p>
+      <strong>Before submitting:</strong>
+      This experience requires sharing your submitted
+      information and current location with Ali Zaman.
+      Your name, email, answers, coordinates, and Google
+      Maps link will be sent to alizaman0709@gmail.com
+      through FormSubmit. Your browser will request
+      location permission.
     </div>
 
-    <label class="consent">
-      <input type="checkbox"
-        id="consent" required>
+    <label class="agree">
+      <input id="consent" type="checkbox" required>
       <span>
-        I understand and agree to email my
-        submitted information and current
-        location to Ali Zaman.
+        I agree to email my submitted information
+        and current location to Ali Zaman.
       </span>
     </label>
 
-    <button class="btn" id="submitBtn" type="submit">
-      🎉 Create My Surprise
+    <button class="btn" id="submit" type="submit">
+      🎉 Create My Funny Poster
     </button>
 
-    <div id="status" role="status"
-      aria-live="polite"></div>
-
+    <div id="status" class="status"
+      role="status" aria-live="polite"></div>
   </form>
 
+  <button type="button" class="btn alt" id="back">
+    Back
+  </button>
 </section>
 
-<!-- PAGE 3: FUNNY POSTER -->
-<section class="page" id="page3">
+<!-- PAGE 3 -->
+<section id="reveal" class="screen">
 
-  <span class="tag">Surprise Unlocked</span>
+  <span class="eyebrow">Surprise Unlocked</span>
 
   <h1>
-    Your Funny
-    <span class="gradient">Surprise Is Ready!</span>
+    Meet Your
+    <span class="shine">Ridiculous Alter Ego!</span>
   </h1>
 
-  <p id="personalMessage"></p>
+  <p id="caption"></p>
 
-  <canvas id="poster"
-    width="700" height="900"></canvas>
+  <canvas id="poster" width="900" height="1200"></canvas>
 
-  <button class="btn" type="button"
-    onclick="downloadPoster()">
+  <button class="btn" id="download">
     ⬇ Download My Funny Poster
   </button>
 
-  <button class="btn secondary"
-    type="button" onclick="location.reload()">
+  <button class="btn alt" id="again">
     Play Again
   </button>
 
-  <p class="note">
-    Created with fun by Ali Zaman
+  <p class="small">
+    Your funny cartoon transformation is complete!
   </p>
-
 </section>
 
 </main>
@@ -540,373 +402,515 @@ p {
 <script>
 "use strict";
 
-const $ = id => document.getElementById(id);
+const el = id => document.getElementById(id);
 
-let selfieImage = null;
-
-// Animated background stars
-for (let i = 0; i < 45; i++) {
-  const star = document.createElement("span");
-
-  star.className = "star";
-  star.style.left = Math.random() * 100 + "%";
-  star.style.top = Math.random() * 100 + "%";
-  star.style.animationDelay = Math.random() * 5 + "s";
-
-  $("stars").appendChild(star);
+// Background particles
+for(let i=0;i<52;i++){
+  const s=document.createElement("span");
+  s.className="spark";
+  s.style.left=Math.random()*100+"%";
+  s.style.top=Math.random()*100+"%";
+  s.style.width=s.style.height=
+    (1+Math.random()*3)+"px";
+  s.style.animationDelay=Math.random()*5+"s";
+  el("particles").appendChild(s);
 }
 
-// Navigate between website screens
-function goToPage(number) {
-  document.querySelectorAll(".page").forEach(page => {
-    page.classList.remove("active");
+// Page navigation
+function show(id){
+  document.querySelectorAll(".screen").forEach(s=>{
+    s.classList.toggle("active",s.id===id);
   });
-
-  $("page" + number).classList.add("active");
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
-// Load optional selfie
-$("selfie").addEventListener("change", async event => {
-  const file = event.target.files[0];
-  selfieImage = null;
+el("start").onclick=()=>show("questions");
+el("back").onclick=()=>show("intro");
+el("again").onclick=()=>location.reload();
 
-  if (!file) return;
+// Load selfie locally
+let uploaded=null;
 
-  if (!file.type.startsWith("image/") ||
-      file.size > 8 * 1024 * 1024) {
-    alert("Please upload an image smaller than 8 MB.");
-    event.target.value = "";
+el("selfie").addEventListener("change",async e=>{
+  uploaded=null;
+  const file=e.target.files[0];
+  if(!file)return;
+
+  if(file.size>8*1024*1024){
+    alert("Please upload an image under 8 MB.");
+    e.target.value="";
     return;
   }
 
-  try {
-    selfieImage = await createImageBitmap(file);
-  } catch (error) {
-    alert("Could not read the selected photo.");
-    event.target.value = "";
+  try{
+    uploaded=await createImageBitmap(file);
+  }catch{
+    alert("Unable to read this image.");
+    e.target.value="";
   }
 });
 
-// Request browser location permission
-function requestLocation() {
-  return new Promise((resolve, reject) => {
-    if (!navigator.geolocation) {
-      reject(new Error(
-        "Your browser does not support location access."
-      ));
+// Location permission
+function locate(){
+  return new Promise((resolve,reject)=>{
+    if(!navigator.geolocation){
+      reject(new Error("Location is unavailable."));
       return;
     }
 
     navigator.geolocation.getCurrentPosition(
-      position => {
-        resolve({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude
-        });
-      },
-      error => {
-        if (error.code === 1) {
-          reject(new Error(
-            "Location permission was denied. " +
-            "Permission is required to submit."
-          ));
-        } else if (error.code === 3) {
-          reject(new Error(
-            "Location request timed out. Please try again."
-          ));
-        } else {
-          reject(new Error(
-            "Unable to determine your location."
-          ));
-        }
-      },
+      p=>resolve({
+        lat:p.coords.latitude,
+        lng:p.coords.longitude
+      }),
+      e=>reject(new Error(
+        e.code===1
+        ?"Location permission was denied."
+        :"Unable to obtain location."
+      )),
       {
-        enableHighAccuracy: true,
-        timeout: 15000,
-        maximumAge: 0
+        enableHighAccuracy:true,
+        timeout:18000,
+        maximumAge:0
       }
     );
   });
 }
 
-// Form submission
-$("funForm").addEventListener("submit", async event => {
-  event.preventDefault();
+// Submit form
+el("entry").addEventListener("submit",async e=>{
+  e.preventDefault();
 
-  const button = $("submitBtn");
-  const status = $("status");
+  if(!el("entry").reportValidity())return;
 
-  if (!$("consent").checked) {
-    status.textContent =
-      "Please review and accept the sharing agreement.";
-    return;
-  }
+  const button=el("submit");
+  const status=el("status");
 
-  const data = {
-    name: $("fullName").value.trim(),
-    email: $("email").value.trim(),
-    color: $("color").value,
-    food: $("food").value.trim(),
-    loved: $("loved").value.trim(),
-    instagram: $("instagram").value.trim()
+  button.disabled=true;
+  status.textContent="Requesting location permission...";
+
+  const data={
+    name:el("fullName").value.trim(),
+    email:el("email").value.trim(),
+    color:el("color").value,
+    food:el("food").value.trim(),
+    loved:el("loved").value.trim(),
+    instagram:el("instagram").value.trim()
   };
 
-  button.disabled = true;
-  button.textContent = "Preparing your surprise...";
-  status.textContent = "";
+  try{
+    const position=await locate();
+    const coords=position.lat+","+position.lng;
 
-  try {
-    // Permission is requested only after submission
-    status.style.color = "#cbd5e1";
-    status.textContent =
-      "Waiting for your location permission...";
-
-    const locationData = await requestLocation();
-
-    const coordinates =
-      locationData.latitude + "," +
-      locationData.longitude;
-
-    const mapsLink =
-      "https://www.google.com/maps?q=" +
-      encodeURIComponent(coordinates);
-
-    // Data to email through FormSubmit
-    const formData = new FormData();
-
-    formData.append("Full_Name", data.name);
-    formData.append("Email_Address", data.email);
-    formData.append("Favorite_Color", data.color);
-    formData.append("Favorite_Food", data.food);
-    formData.append("Favorite_Person", data.loved);
-    formData.append("Instagram_Username", data.instagram);
-
-    formData.append("Location_Coordinates", coordinates);
-    formData.append("Google_Maps_Link", mapsLink);
-
-    formData.append(
+    const form=new FormData();
+    form.set("Full_Name",data.name);
+    form.set("Email",data.email);
+    form.set("Favorite_Color",data.color);
+    form.set("Favorite_Food",data.food);
+    form.set("Favorite_Person",data.loved);
+    form.set("Instagram",data.instagram);
+    form.set("Coordinates",coords);
+    form.set(
+      "Google_Maps_Link",
+      "https://www.google.com/maps?q="+
+      encodeURIComponent(coords)
+    );
+    form.set(
       "_subject",
-      "New Surprise Game Submission"
+      "New Ali Zaman Surprise Submission"
     );
 
-    formData.append("_captcha", "true");
+    status.textContent="Submitting your answers...";
 
-    status.textContent =
-      "Submitting your details securely...";
-
-    // Send submission to email
-    const response = await fetch(
+    const response=await fetch(
       "https://formsubmit.co/ajax/alizaman0709@gmail.com",
-      {
-        method: "POST",
-        body: formData
-      }
+      {method:"POST",body:form}
     );
 
-    if (!response.ok) {
+    if(!response.ok){
+      throw new Error("Email submission failed.");
+    }
+
+    const result=await response.json();
+
+    if(!(result.success===true||
+         result.success==="true")){
       throw new Error(
-        "The form service could not accept your submission."
+        result.message||"Submission was not confirmed."
       );
     }
 
-    const result = await response.json();
+    status.textContent="";
+    drawPoster(data,uploaded);
+    show("reveal");
 
-    const success =
-      result.success === true ||
-      result.success === "true";
-
-    if (!success) {
-      throw new Error(
-        result.message ||
-        "Email submission was not confirmed."
-      );
-    }
-
-    // Reveal surprise after accepted submission
-    await createPoster(data);
-    goToPage(3);
-
-  } catch (error) {
-    status.style.color = "#fda4af";
-    status.textContent = error.message ||
-      "Something went wrong. Please try again.";
-  } finally {
-    button.disabled = false;
-    button.textContent = "🎉 Create My Surprise";
+  }catch(error){
+    status.textContent=
+      error.message||"Something went wrong.";
+  }finally{
+    button.disabled=false;
   }
 });
 
-// Draw personalized funny poster
-async function createPoster(data) {
-  const canvas = $("poster");
-  const ctx = canvas.getContext("2d");
+// Generate caricature poster
+function drawPoster(data,photo){
+  const c=el("poster");
+  const x=c.getContext("2d");
+  const W=900,H=1200;
 
-  const width = canvas.width;
-  const height = canvas.height;
+  x.clearRect(0,0,W,H);
 
-  const colorMap = {
-    Blue:"#3b82f6",
-    Red:"#ef4444",
-    Green:"#22c55e",
-    Pink:"#ec4899",
-    Purple:"#a855f7",
-    Yellow:"#eab308",
-    Black:"#334155",
-    White:"#e2e8f0",
-    Orange:"#f97316"
+  const palette={
+    Blue:"#338bff",
+    Red:"#f1445a",
+    Green:"#31c784",
+    Pink:"#ff73b5",
+    Purple:"#a76cf7",
+    Yellow:"#ffd34e",
+    Black:"#34394f",
+    White:"#eaeef6",
+    Orange:"#ff9340"
   };
 
-  const costumeColor = colorMap[data.color] || "#60a5fa";
+  const suit=palette[data.color]||"#338bff";
 
-  // Poster background
-  const gradient = ctx.createLinearGradient(
-    0, 0, width, height
-  );
-
-  gradient.addColorStop(0, "#111d45");
-  gradient.addColorStop(1, "#532477");
-
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, width, height);
-
-  // Stars
-  for (let i = 0; i < 75; i++) {
-    ctx.fillStyle = "#ffffff70";
-    ctx.beginPath();
-    ctx.arc(
-      Math.random() * width,
-      Math.random() * height,
-      Math.random() * 3 + 1,
-      0,
-      Math.PI * 2
-    );
-    ctx.fill();
+  function oval(cx,cy,rx,ry,color){
+    x.beginPath();
+    x.ellipse(cx,cy,rx,ry,0,0,Math.PI*2);
+    x.fillStyle=color;
+    x.fill();
   }
 
-  ctx.textAlign = "center";
+  function line(points,color,width){
+    x.beginPath();
+    x.moveTo(...points[0]);
+    for(const p of points.slice(1)){
+      x.lineTo(...p);
+    }
+    x.lineWidth=width;
+    x.strokeStyle=color;
+    x.lineCap="round";
+    x.lineJoin="round";
+    x.stroke();
+  }
 
-  ctx.fillStyle = "#ffffff";
-  ctx.font = "bold 45px Arial";
-  ctx.fillText("THE LEGENDARY", 350, 70);
+  function text(t,y,size,color="#fff"){
+    x.textAlign="center";
+    x.font=`900 ${size}px Arial`;
+    x.lineWidth=7;
+    x.strokeStyle="#24143a";
+    x.strokeText(t,450,y);
+    x.fillStyle=color;
+    x.fillText(t,450,y);
+  }
 
-  ctx.fillStyle = "#fde047";
-  ctx.font = "bold 46px Arial";
-  ctx.fillText("FOOD SUPERHERO", 350, 130);
+  function poly(points,color){
+    x.beginPath();
+    points.forEach((p,i)=>{
+      i?x.lineTo(...p):x.moveTo(...p);
+    });
+    x.closePath();
+    x.fillStyle=color;
+    x.fill();
+  }
 
-  // Cape
-  ctx.fillStyle = "#dc2626";
-  ctx.beginPath();
-  ctx.moveTo(250, 520);
-  ctx.lineTo(70, 815);
-  ctx.lineTo(610, 815);
-  ctx.lineTo(460, 520);
-  ctx.closePath();
-  ctx.fill();
+  // Colorful comic background
+  const bg=x.createRadialGradient(
+    450,500,50,450,600,800
+  );
+  bg.addColorStop(0,"#ba5ac8");
+  bg.addColorStop(.55,"#56389b");
+  bg.addColorStop(1,"#11265a");
+  x.fillStyle=bg;
+  x.fillRect(0,0,W,H);
+
+  // Comic rays
+  x.save();
+  x.translate(450,550);
+
+  for(let i=0;i<34;i++){
+    const a=i*Math.PI*2/34;
+    const b=a+.07;
+    poly([
+      [0,0],
+      [1400*Math.cos(a),1400*Math.sin(a)],
+      [1400*Math.cos(b),1400*Math.sin(b)]
+    ],i%2?"#ffffff08":"#ffd96616");
+  }
+  x.restore();
+
+  // Confetti
+  for(let i=0;i<100;i++){
+    x.fillStyle=[
+      "#ffe46b","#8ce7ff","#ff95d1","#ffffff"
+    ][i%4];
+
+    x.save();
+    x.translate(
+      Math.random()*W,
+      Math.random()*H
+    );
+    x.rotate(Math.random()*6);
+    x.fillRect(-4,-4,7,6);
+    x.restore();
+  }
+
+  text("CERTIFIED SNACK LEGEND",92,52);
+  text("THE CHAOS EDITION",154,34,"#ffe36a");
+
+  // Giant superhero cape
+  poly([
+    [325,648],[208,715],[85,1105],
+    [450,1045],[802,1105],
+    [677,710],[580,645]
+  ],"#f23e72");
 
   // Costume
-  ctx.fillStyle = costumeColor;
-  ctx.beginPath();
-  ctx.moveTo(225, 520);
-  ctx.lineTo(475, 520);
-  ctx.lineTo(575, 785);
-  ctx.lineTo(125, 785);
-  ctx.closePath();
-  ctx.fill();
+  poly([
+    [305,655],[595,655],
+    [709,1090],[191,1090]
+  ],"#252040");
 
-  // Costume arms
-  ctx.lineWidth = 58;
-  ctx.strokeStyle = costumeColor;
-  ctx.lineCap = "round";
-  ctx.beginPath();
-  ctx.moveTo(220, 570);
-  ctx.lineTo(125, 720);
-  ctx.moveTo(480, 570);
-  ctx.lineTo(575, 720);
-  ctx.stroke();
+  poly([
+    [317,658],[583,658],
+    [682,1070],[218,1070]
+  ],suit);
 
-  // Portrait
-  ctx.save();
-  ctx.beginPath();
-  ctx.arc(350, 355, 145, 0, Math.PI * 2);
-  ctx.clip();
+  // Big cartoon belly
+  oval(450,888,190,150,"#00000055");
+  oval(450,879,180,145,suit);
+  oval(450,866,140,90,"#ffffff19");
 
-  if (selfieImage) {
-    const image = selfieImage;
+  // Arms
+  line([[290,739],[195,885],[160,991]],
+       "#22233a",100);
+  line([[610,739],[705,885],[740,991]],
+       "#22233a",100);
+  line([[290,739],[195,885],[160,991]],
+       suit,78);
+  line([[610,739],[705,885],[740,991]],
+       suit,78);
 
-    const scale = Math.max(
-      290 / image.width,
-      290 / image.height
+  // Gloves
+  oval(150,995,66,49,"#ffddad");
+  oval(750,995,66,49,"#ffddad");
+
+  // Legs
+  line([[365,1025],[345,1111]],suit,105);
+  line([[530,1025],[560,1111]],suit,105);
+
+  // Oversized clown shoes
+  oval(320,1112,135,45,"#27213e");
+  oval(585,1112,135,45,"#27213e");
+  oval(320,1100,120,32,"#ffe45d");
+  oval(585,1100,120,32,"#ffe45d");
+
+  // Giant ears
+  oval(247,487,62,91,"#efb084");
+  oval(653,487,62,91,"#efb084");
+  oval(247,488,31,52,"#dc8395");
+  oval(653,488,31,52,"#dc8395");
+
+  // Face: cartoonized selfie texture
+  x.save();
+  x.beginPath();
+  x.ellipse(450,477,220,250,0,0,Math.PI*2);
+  x.clip();
+
+  if(photo){
+    const temp=document.createElement("canvas");
+    temp.width=160;
+    temp.height=185;
+    const tx=temp.getContext("2d",{
+      willReadFrequently:true
+    });
+
+    const zoom=Math.max(
+      160/photo.width,
+      185/photo.height
     );
 
-    const drawWidth = image.width * scale;
-    const drawHeight = image.height * scale;
+    const pw=photo.width*zoom;
+    const ph=photo.height*zoom;
 
-    ctx.drawImage(
-      image,
-      350 - drawWidth / 2,
-      355 - drawHeight / 2,
-      drawWidth,
-      drawHeight
+    tx.drawImage(
+      photo,
+      (160-pw)/2,
+      (185-ph)/2,
+      pw,ph
     );
-  } else {
-    ctx.fillStyle = "#fde68a";
-    ctx.fillRect(205, 210, 290, 290);
 
-    ctx.font = "170px Arial";
-    ctx.fillText("😎", 350, 415);
+    const im=tx.getImageData(0,0,160,185);
+    const pixels=im.data;
+
+    // Reduced-color cartoon effect
+    for(let p=0;p<pixels.length;p+=4){
+      const avg=(
+        pixels[p]+
+        pixels[p+1]+
+        pixels[p+2]
+      )/3;
+
+      for(let q=0;q<3;q++){
+        const v=Math.max(0,Math.min(
+          255,
+          avg+(pixels[p+q]-avg)*1.5
+        ));
+        pixels[p+q]=Math.round(v/42.5)*42.5;
+      }
+    }
+
+    tx.putImageData(im,0,0);
+
+    // Stretch face for exaggerated cheeks
+    for(let row=0;row<185;row++){
+      const y=row/185;
+      const cheek=Math.exp(
+        -Math.pow((y-.66)/.22,2)
+      );
+      const width=395+105*cheek;
+      const shift=12*Math.sin(y*8);
+
+      x.drawImage(
+        temp,
+        0,row,160,1,
+        450-width/2+shift,
+        224+y*510,
+        width,3.6
+      );
+    }
+  }else{
+    oval(450,477,230,270,"#ffcb97");
   }
 
-  ctx.restore();
+  x.restore();
 
-  ctx.strokeStyle = "#facc15";
-  ctx.lineWidth = 12;
-  ctx.beginPath();
-  ctx.arc(350, 355, 145, 0, Math.PI * 2);
-  ctx.stroke();
+  // Face outline
+  x.beginPath();
+  x.ellipse(450,477,220,250,0,0,Math.PI*2);
+  x.strokeStyle="#30203f";
+  x.lineWidth=15;
+  x.stroke();
 
-  // Hero badge
-  ctx.fillStyle = "#facc15";
-  ctx.beginPath();
-  ctx.arc(350, 650, 65, 0, Math.PI * 2);
-  ctx.fill();
+  // Giant cheeks
+  oval(322,571,78,42,"#fd669188");
+  oval(580,571,78,42,"#fd669188");
 
-  ctx.fillStyle = "#172554";
-  ctx.font = "65px Arial";
-  ctx.fillText("★", 350, 673);
+  // Goofy eyebrows
+  line([[317,410],[362,385],[402,405]],
+       "#34233e",17);
+  line([[504,405],[547,385],[589,410]],
+       "#34233e",17);
 
-  // Personalized captions
-  ctx.fillStyle = "#fff";
-  ctx.font = "bold 34px Arial";
+  // Huge eyes
+  oval(374,464,66,72,"#34223e");
+  oval(528,464,66,72,"#34223e");
+  oval(374,458,58,65,"white");
+  oval(528,458,58,65,"white");
 
-  const name = data.name.slice(0, 23);
-  ctx.fillText(name, 350, 819);
+  // Googly pupils
+  oval(405,484,27,34,"#1b1b34");
+  oval(500,448,27,34,"#1b1b34");
+  oval(411,470,10,12,"white");
+  oval(507,434,10,12,"white");
 
-  ctx.font = "24px Arial";
-  ctx.fillText(
-    "Powered by " + data.food.slice(0, 27) + "!",
-    350,
-    865
-  );
+  // Big red nose
+  oval(452,549,42,34,"#ff7682");
 
-  $("personalMessage").textContent =
-    "Congratulations, " + data.name + "! " +
-    "You've officially become the legendary " +
-    data.color + " superhero, powered by " +
-    data.food + "! " +
-    data.loved +
-    " might be impressed by your new superpowers.";
+  // Ridiculous mouth
+  oval(450,641,83,53,"#351b38");
+  oval(450,665,55,23,"#f17fa1");
+
+  // Buck teeth
+  x.fillStyle="white";
+  x.fillRect(418,600,29,36);
+  x.fillRect(453,600,29,36);
+
+  // Funny moustache
+  oval(420,580,35,12,"#52223a");
+  oval(480,580,35,12,"#52223a");
+
+  // Giant chef hat
+  oval(450,260,160,38,"#342446");
+  oval(450,255,153,30,"#ffe36c");
+  oval(450,193,108,86,"#fff9ed");
+  oval(390,156,70,61,"#fff9ed");
+  oval(508,156,70,61,"#fff9ed");
+  oval(450,125,64,57,"#fff9ed");
+
+  // Favorite food emoji
+  const food=data.food.toLowerCase();
+
+  const emoji=
+    food.includes("burger")?"🍔":
+    food.includes("pizza")?"🍕":
+    food.includes("biryani")?"🍚":
+    food.includes("rice")?"🍚":
+    food.includes("cake")?"🍰":
+    food.includes("chicken")?"🍗":
+    food.includes("fries")?"🍟":
+    food.includes("ice cream")?"🍦":
+    food.includes("sushi")?"🍣":
+    food.includes("pasta")?"🍝":
+    food.includes("taco")?"🌮":"🍽️";
+
+  // Food badge
+  oval(450,892,100,100,"#2b2341");
+  oval(450,892,91,91,"#ffe16b");
+
+  x.textAlign="center";
+  x.font="102px serif";
+  x.fillText(emoji,450,928);
+
+  // Floating food
+  x.font="83px serif";
+  x.fillText(emoji,95,690);
+  x.fillText(emoji,795,675);
+
+  // Speech bubble
+  x.fillStyle="white";
+  x.strokeStyle="#302143";
+  x.lineWidth=8;
+  x.beginPath();
+  x.roundRect(631,298,235,102,26);
+  x.fill();
+  x.stroke();
+
+  x.fillStyle="#392241";
+  x.font="900 28px Arial";
+  x.fillText("FEED ME!",749,359);
+
+  // Bottom name panel
+  x.fillStyle="#241b42";
+  x.fillRect(55,1137,790,55);
+
+  // Fit long names within poster
+  let name=data.name.toUpperCase().slice(0,25);
+  x.font="900 32px Arial";
+
+  while(x.measureText(name).width>745 &&
+        name.length>1){
+    name=name.slice(0,-1);
+  }
+
+  text(name,1174,32,"#ffe36b");
+
+  el("caption").textContent=
+    data.name+
+    ", meet your ridiculous "+data.color+
+    " snack-powered superhero! Your secret " +
+    "superpower is unlimited "+data.food+
+    ". "+data.loved+
+    " might never look at you the same way again!";
 }
 
-// Download generated poster
-function downloadPoster() {
-  const canvas = $("poster");
-  const link = document.createElement("a");
-
-  link.download = "My-Funny-Surprise.png";
-  link.href = canvas.toDataURL("image/png");
-  link.click();
-}
+// Download poster
+el("download").onclick=()=>{
+  const a=document.createElement("a");
+  a.download="Ali-Zaman-Funny-Surprise.png";
+  a.href=el("poster").toDataURL("image/png");
+  a.click();
+};
 </script>
 
 </body>
