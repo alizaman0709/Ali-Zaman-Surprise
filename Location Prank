@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Location Sharing Demo</title>
+</head>
+<body style="background:#080d12;color:#00ff88;text-align:center;font-family:Arial;padding:50px">
+
+  <h1>📍 LOCATION REVEAL</h1>
+  <p>Share your location with your friend.</p>
+
+  <button onclick="getLocation()">
+    Share My Location
+  </button>
+
+  <p id="result"></p>
+
+  <script>
+    function getLocation() {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+
+          document.getElementById("result").innerHTML =
+            "Location shared successfully!<br>" +
+            "Latitude: " + lat + "<br>" +
+            "Longitude: " + lon + "<br>" +
+            '<a style="color:white" target="_blank" href="https://www.google.com/maps?q=' +
+            lat + ',' + lon + '">View on Google Maps</a>';
+        },
+        function() {
+          document.getElementById("result").innerText =
+            "Location permission denied or unavailable.";
+        }
+      );
+    }
+  </script>
+
+</body>
+</html>
