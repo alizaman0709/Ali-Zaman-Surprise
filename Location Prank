@@ -1,41 +1,70 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Location Sharing Demo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+  <title>Location Prank</title>
+  <style>
+    body {
+      background: #101827;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .card {
+      max-width: 420px;
+      margin: auto;
+      padding: 30px;
+      background: #1e293b;
+      border-radius: 18px;
+    }
+    button {
+      background: #22c55e;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 10px;
+      font-size: 17px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 25px;
+      font-size: 20px;
+    }
+  </style>
 </head>
-<body style="background:#080d12;color:#00ff88;text-align:center;font-family:Arial;padding:50px">
-
-  <h1>📍 LOCATION REVEAL</h1>
-  <p>Share your location with your friend.</p>
-
-  <button onclick="getLocation()">
-    Share My Location
-  </button>
-
-  <p id="result"></p>
+<body>
+  <div class="card">
+    <h1>📍 Location Scanner</h1>
+    <p>Can we guess where you are?</p>
+    <button onclick="startPrank()">
+      Find My Location
+    </button>
+    <div id="result"></div>
+  </div>
 
   <script>
-    function getLocation() {
-      navigator.geolocation.getCurrentPosition(
-        function(position) {
-          const lat = position.coords.latitude;
-          const lon = position.coords.longitude;
+    function startPrank() {
+      const result =
+        document.getElementById("result");
 
-          document.getElementById("result").innerHTML =
-            "Location shared successfully!<br>" +
-            "Latitude: " + lat + "<br>" +
-            "Longitude: " + lon + "<br>" +
-            '<a style="color:white" target="_blank" href="https://www.google.com/maps?q=' +
-            lat + ',' + lon + '">View on Google Maps</a>';
-        },
-        function() {
-          document.getElementById("result").innerText =
-            "Location permission denied or unavailable.";
-        }
-      );
+      result.textContent = "Scanning...";
+
+      setTimeout(() => {
+        result.textContent =
+          "Locating your device...";
+      }, 1500);
+
+      setTimeout(() => {
+        result.innerHTML =
+          "😂 GOT YOU!<br>" +
+          "This was just a prank!<br>" +
+          "Your real location was never accessed.";
+      }, 3500);
     }
   </script>
-
 </body>
 </html>
