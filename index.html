@@ -4,143 +4,569 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>See An Amazing Thing</title>
+<title>A Special Surprise From Ali Zaman</title>
+
 <style>
-  body {
-    background: #101827;
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 50px 16px;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --blue: #60a5fa;
+  --purple: #a78bfa;
+  --cyan: #67e8f9;
+  --white: #f8fafc;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #050b1b;
+  color: var(--white);
+  font-family: 'Outfit', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  padding: 60px 18px;
+}
+
+/* Animated background */
+.aurora {
+  position: fixed;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: .32;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.aurora.one {
+  background: #2563eb;
+  top: -280px;
+  left: -200px;
+  animation: moveOne 12s ease-in-out infinite alternate;
+}
+
+.aurora.two {
+  background: #7c3aed;
+  right: -240px;
+  bottom: -280px;
+  animation: moveTwo 14s ease-in-out infinite alternate;
+}
+
+@keyframes moveOne {
+  to { transform: translate(180px, 180px) scale(1.25); }
+}
+@keyframes moveTwo {
+  to { transform: translate(-180px, -160px) scale(1.2); }
+}
+
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(#ffffff08 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff08 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent);
+  pointer-events: none;
+}
+
+/* Floating stars */
+.star {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: .5;
+  animation: twinkle 4s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes twinkle {
+  from { opacity: .1; transform: scale(.5); }
+  to { opacity: .9; transform: scale(1.8); }
+}
+
+.container {
+  width: 100%;
+  max-width: 540px;
+  position: relative;
+  z-index: 2;
+}
+
+.card {
+  padding: 48px 36px;
+  text-align: center;
+  background: rgba(15, 23, 42, .72);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(148, 163, 184, .22);
+  border-radius: 28px;
+  box-shadow:
+    0 30px 100px rgba(0,0,0,.45),
+    0 0 60px rgba(59,130,246,.09);
+  animation: cardEnter 1s ease both;
+}
+
+@keyframes cardEnter {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(96,165,250,.11);
+  border: 1px solid rgba(96,165,250,.3);
+  color: #93c5fd;
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Animated gift */
+.gift-area {
+  width: 160px;
+  height: 160px;
+  position: relative;
+  margin: 30px auto;
+  display: grid;
+  place-items: center;
+}
+
+.ring {
+  position: absolute;
+  width: 145px;
+  height: 145px;
+  border: 1px dashed rgba(147,197,253,.4);
+  border-radius: 50%;
+  animation: rotate 16s linear infinite;
+}
+
+.ring.second {
+  width: 115px;
+  height: 115px;
+  border-color: rgba(167,139,250,.5);
+  animation-direction: reverse;
+}
+
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
+
+.gift {
+  font-size: 75px;
+  filter: drop-shadow(0 0 25px rgba(96,165,250,.4));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+h1 {
+  font-size: clamp(32px, 6vw, 45px);
+  line-height: 1.16;
+  margin: 22px 0;
+  letter-spacing: -1.5px;
+}
+
+.gradient {
+  background: linear-gradient(90deg, #93c5fd, #c4b5fd, #67e8f9);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.description {
+  font-size: 16px;
+  color: #aebdd5;
+  line-height: 1.8;
+  margin: 18px auto 28px;
+}
+
+.highlight {
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+button {
+  font: inherit;
+}
+
+.main-btn {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  padding: 18px 22px;
+  background: linear-gradient(110deg, #3b82f6, #8b5cf6);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .3s, box-shadow .3s;
+}
+
+.main-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px rgba(99,102,241,.4);
+}
+
+.main-btn:active {
+  transform: translateY(0);
+}
+
+.main-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg,
+    transparent 25%, #ffffff50 50%, transparent 75%);
+  transform: translateX(-130%);
+  transition: transform .7s;
+}
+
+.main-btn:hover::after {
+  transform: translateX(130%);
+}
+
+.secondary-btn {
+  width: 100%;
+  border: 1px solid #475569;
+  border-radius: 13px;
+  color: #dbeafe;
+  background: #ffffff08;
+  padding: 15px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background .25s, transform .25s;
+}
+
+.secondary-btn:hover {
+  background: #ffffff15;
+  transform: translateY(-2px);
+}
+
+.note {
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 1.7;
+  margin-top: 22px;
+}
+
+.panel {
+  margin-top: 25px;
+  padding: 22px;
+  background: rgba(15,23,42,.65);
+  border: 1px solid #334155;
+  border-radius: 16px;
+  animation: cardEnter .5s ease both;
+}
+
+.panel h2 {
+  margin-top: 0;
+}
+
+.panel p {
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: left;
+  color: #cbd5e1;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 20px 0;
+}
+
+.consent input {
+  margin-top: 4px;
+  accent-color: #60a5fa;
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
+a {
+  color: #93c5fd;
+}
+
+.hidden {
+  display: none;
+}
+
+#status {
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+@media(max-width: 480px) {
+  .card { padding: 32px 20px; }
+  .gift-area { margin: 20px auto; }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
   }
-  .card {
-    background: #1e293b;
-    padding: 28px;
-    border-radius: 18px;
-    max-width: 420px;
-    margin: auto;
-  }
-  button {
-    background: #22c55e;
-    color: white;
-    border: none;
-    padding: 14px 20px;
-    border-radius: 10px;
-    margin-top: 15px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-  button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  #result { margin-top: 20px; }
-  .consent {
-    text-align: left;
-    margin-top: 20px;
-    line-height: 1.5;
-  }
-  a { color: #93c5fd; }
+}
 </style>
 </head>
+
 <body>
-<div class="card">
-  <h1>📍See An Amazing Thing & This is just for you </h1>
 
-  <p>
-    This page lets you Connect with Ali Zaman And he created a surprise just for you.
-  </p>
+<div class="aurora one"></div>
+<div class="aurora two"></div>
+<div class="grid-bg"></div>
+<div id="stars"></div>
 
-  <p>
-    Your browser will ask permission first.
-    Nothing is emailed until you confirm.
-  </p>
+<main class="container">
+  <div class="card">
 
-  <button type="button" onclick="getLocation()">
-    Clieck on this to see it.
-  </button>
+    <span class="badge">
+      A Personal Invitation
+    </span>
 
-  <div id="result"></div>
-
-  <form
-    action="https://formsubmit.co/alizaman0709@gmail.com"
-    method="POST"
-    id="locationForm"
-    style="display:none"
-  >
-    <input type="hidden"
-      name="_subject"
-      value="New Location Shared">
-
-    <input type="hidden"
-      name="Google_Maps_Link"
-      id="mapLink">
-
-    <input type="hidden"
-      name="Coordinates"
-      id="coordinates">
-
-    <div class="consent">
-      <label>
-        <input type="checkbox" required
-          id="consentBox">
-        I agree to see a Surprise from Ali Zaman
-        to alizaman0709@gmail.com using FormSubmit.
-      </label>
+    <div class="gift-area">
+      <div class="ring"></div>
+      <div class="ring second"></div>
+      <div class="gift">🎁</div>
     </div>
 
-    <button type="submit">
-      Confirm
+    <h1>
+      Ali Zaman Has a
+      <span class="gradient">Surprise for You!</span>
+    </h1>
+
+    <p class="description">
+      You've received a special invitation from Ali Zaman.
+      A little mystery, a little excitement, and
+      something wonderful waiting to be discovered.
+    </p>
+
+    <p class="highlight">
+      Ready to unlock your surprise?
+    </p>
+
+    <button class="main-btn"
+      onclick="openSurprise()">
+      ✨ Unlock My Surprise
     </button>
-  </form>
-</div>
+
+    <div class="panel hidden" id="surprisePanel">
+      <h2>🎉 Surprise!</h2>
+      <p>
+        You've unlocked a special message from Ali Zaman:
+        May your day be filled with happiness,
+        laughter, and wonderful moments!
+      </p>
+      <p>
+        Thanks for being part of this little adventure.
+      </p>
+    </div>
+
+    <button class="secondary-btn"
+      onclick="toggleSharing()">
+      📍 Optional: Share My Location
+    </button>
+
+    <div class="panel hidden" id="locationPanel">
+      <h2>Share Your Location</h2>
+
+      <p>
+        You can optionally share your current location
+        with Ali Zaman. Your browser will request
+        permission to access your coordinates.
+      </p>
+
+      <p>
+        After reviewing your location, you can choose
+        whether to email it to
+        <strong>alizaman0709@gmail.com</strong>
+        through FormSubmit.
+      </p>
+
+      <button class="main-btn" type="button"
+        onclick="getLocation()">
+        Get & Review My Location
+      </button>
+
+      <div id="status" role="status"></div>
+
+      <div id="locationPreview" class="hidden">
+        <p>Your location is ready for review.</p>
+        <a id="mapPreview" target="_blank"
+          rel="noopener noreferrer">
+          View My Location on Google Maps
+        </a>
+      </div>
+
+      <form
+        id="locationForm"
+        class="hidden"
+        action="https://formsubmit.co/alizaman0709@gmail.com"
+        method="POST">
+
+        <input type="hidden" name="_subject"
+          value="Location Shared With Ali Zaman">
+
+        <input type="hidden"
+          name="Google_Maps_Link" id="mapLink">
+
+        <input type="hidden"
+          name="Coordinates" id="coordinates">
+
+        <label class="consent">
+          <input type="checkbox"
+            id="consentBox" required>
+          <span>
+            I voluntarily agree to email my current
+            location coordinates and Google Maps link
+            to Ali Zaman at alizaman0709@gmail.com
+            using FormSubmit. I understand this is
+            optional.
+          </span>
+        </label>
+
+        <button class="main-btn" type="submit">
+          Confirm & Send My Location
+        </button>
+      </form>
+
+      <button class="secondary-btn"
+        onclick="toggleSharing()">
+        Cancel Location Sharing
+      </button>
+    </div>
+
+    <p class="note">
+      Created with care by Ali Zaman.
+      <br>
+      Your surprise does not require location sharing.
+    </p>
+
+  </div>
+</main>
 
 <script>
-function getLocation() {
-  const result = document.getElementById("result");
-  const form = document.getElementById("locationForm");
+// Decorative animated stars
+const stars = document.getElementById("stars");
 
-  form.style.display = "none";
+for (let i = 0; i < 45; i++) {
+  const star = document.createElement("div");
+  star.className = "star";
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.animationDelay = Math.random() * 5 + "s";
+  star.style.animationDuration =
+    (2 + Math.random() * 4) + "s";
+  stars.appendChild(star);
+}
+
+// Reveal the surprise without location access
+function openSurprise() {
+  const panel = document.getElementById("surprisePanel");
+  panel.classList.remove("hidden");
+  panel.scrollIntoView({
+    behavior: "smooth",
+    block: "nearest"
+  });
+}
+
+// Optional location-sharing section
+function toggleSharing() {
+  const panel = document.getElementById("locationPanel");
+  panel.classList.toggle("hidden");
+
+  if (!panel.classList.contains("hidden")) {
+    panel.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest"
+    });
+  }
+}
+
+function getLocation() {
+  const status = document.getElementById("status");
+  const form = document.getElementById("locationForm");
+  const preview = document.getElementById("locationPreview");
+
+  form.classList.add("hidden");
+  preview.classList.add("hidden");
+  document.getElementById("consentBox").checked = false;
+  document.getElementById("mapLink").value = "";
+  document.getElementById("coordinates").value = "";
 
   if (!navigator.geolocation) {
-    result.textContent = "Location is not supported.";
+    status.textContent = "Location access is not available.";
     return;
   }
 
-  result.textContent = "Requesting permission...";
+  status.textContent =
+    "Waiting for your browser's location permission...";
 
   navigator.geolocation.getCurrentPosition(
-    position => {
+    (position) => {
       const lat = position.coords.latitude;
       const lng = position.coords.longitude;
 
-      const link =
+      const coordinates = lat + ", " + lng;
+      const mapUrl =
         "https://www.google.com/maps?q=" +
-        encodeURIComponent(lat + "," + lng);
+        encodeURIComponent(coordinates);
 
-      document.getElementById("mapLink").value = link;
+      document.getElementById("mapLink").value = mapUrl;
       document.getElementById("coordinates").value =
-        lat + ", " + lng;
+        coordinates;
 
-      result.innerHTML =
-        "<p>Your location is ready:</p>" +
-        "<a href='" + link +
-        "' target='_blank' rel='noopener'>" +
-        "Review Location on Google Maps</a>";
+      const link = document.getElementById("mapPreview");
+      link.href = mapUrl;
 
-      document.getElementById("consentBox").checked = false;
-      form.style.display = "block";
+      preview.classList.remove("hidden");
+      form.classList.remove("hidden");
+
+      status.textContent =
+        "Location received. Review it and choose " +
+        "whether to share it by email.";
     },
-    () => {
-      result.textContent =
-        "Location unavailable or permission denied.";
+    (error) => {
+      if (error.code === 1) {
+        status.textContent =
+          "Location permission was denied. " +
+          "You can still enjoy the surprise.";
+      } else {
+        status.textContent =
+          "Could not retrieve your location. Please try again.";
+      }
     },
     {
       enableHighAccuracy: true,
-      timeout: 15000
+      timeout: 15000,
+      maximumAge: 0
     }
   );
 }
 </script>
+
 </body>
 </html>
